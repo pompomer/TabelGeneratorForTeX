@@ -26,6 +26,7 @@ TableGeneratorForTeX
 ・不具合の報告について
 
 　GitHubでできる？ようですが使い方はよく分かってないです。
+ 
 　以下、連絡先です。
 
 　Twitter: no_kikyou
