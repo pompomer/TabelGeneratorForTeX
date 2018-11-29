@@ -361,11 +361,22 @@ Sub TableGeneratorForTeX()
     Next i
     
     code = code + "\end{tabular}" + vbCrLf + "\end{table}"
+
     
 'コード出力
-    Dim buf As String
+    'Dim buf As String
     
-    buf = InputBox(prompt:="Conversion is done.", Title:="TableGeneratorForTeX", Default:=code)
-   
+    'buf = InputBox(prompt:="Conversion is done.", Title:="TableGeneratorForTeX", Default:=code)
+    
+    Dim file As String
+    file = ActiveWorkbook.Path & "\table.txt"
+    Debug.Print file
+    Open file For Output As #1
+    
+    Print #1, code
+    
+    Close #1
+    
+    MsgBox "Output to 'table.txt' is done"
 End Sub
     
