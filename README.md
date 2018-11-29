@@ -20,7 +20,7 @@ TableGeneratorForTeX
 
 　(7) 開発タブのマクロから「TableGeneratorForTeX」を選択して実行する
 
-　(8) コードが生成されるので、Ctrl+Cなどでコピーする
+　(8) 同じフォルダに"table.txt"が生成されるので、開いてコピペする
 
 
 ・不具合の報告について
