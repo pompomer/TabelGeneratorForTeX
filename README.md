@@ -1,6 +1,6 @@
-TableGeneratorForTeX
+## TableGeneratorForTeX
 
-##使い方
+## 使い方
 
 　(1) basファイルをダウンロード
 
@@ -18,7 +18,7 @@ TableGeneratorForTeX
 
 　(8) 同じフォルダに"table.txt"が生成されるので、開いてコピペする
  
- ##更新内容
+ ## 更新内容
  
  -2018年10月31日
  
