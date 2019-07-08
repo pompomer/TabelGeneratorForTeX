@@ -1,10 +1,6 @@
 TableGeneratorForTeX
 
-・作成者　ぽむぽむ
-
-・更新日　2018年10月31日
-
-・使い方
+##使い方
 
 　(1) basファイルをダウンロード
 
@@ -21,13 +17,14 @@ TableGeneratorForTeX
 　(7) 開発タブのマクロから「TableGeneratorForTeX」を選択して実行する
 
 　(8) 同じフォルダに"table.txt"が生成されるので、開いてコピペする
-
-
-・不具合の報告について
-
-　GitHubでできる？ようですが使い方はよく分かってないです。
  
-　以下、連絡先です。
-
-　Twitter: no_kikyou
-　Gmail  : pomak7351@gmail.com
+ ##更新内容
+ 
+ -2018年10月31日
+ 
+ 公開
+ 
+ -2019年7月9日
+ 
+ 出力先ファイル名を"アクティブファイル名"+"\_TeX.txt"に変更
+ 
