@@ -364,19 +364,23 @@ Sub TableGeneratorForTeX()
 
     
 'コード出力
-    'Dim buf As String
+    Dim fso As FileSystemObject
+    Set fso = New FileSystemObject
+
+    Dim s As String
     
-    'buf = InputBox(prompt:="Conversion is done.", Title:="TableGeneratorForTeX", Default:=code)
+    s = fso.GetBaseName(ActiveWorkbook.FullName)
+    
+    Debug.Print s
     
     Dim file As String
-    file = ActiveWorkbook.Path & "\table.txt"
-    Debug.Print file
+    file = ActiveWorkbook.Path & "\" & s & "_TeX.txt"
     Open file For Output As #1
     
     Print #1, code
     
     Close #1
     
-    MsgBox "Output to 'table.txt' is done"
+    MsgBox "Output to '" & s & "_TeX.txt' is done"
 End Sub
     
