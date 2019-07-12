@@ -364,14 +364,12 @@ Sub TableGeneratorForTeX()
 
     
 'コード出力
-    Dim fso As FileSystemObject
-    Set fso = New FileSystemObject
+    Dim fso As Object
+    Set fso = CreateObject("Scripting.FileSystemObject")
 
     Dim s As String
-    
+
     s = fso.GetBaseName(ActiveWorkbook.FullName)
-    
-    Debug.Print s
     
     Dim file As String
     file = ActiveWorkbook.Path & "\" & s & "_TeX.txt"
@@ -382,5 +380,7 @@ Sub TableGeneratorForTeX()
     Close #1
     
     MsgBox "Output to '" & s & "_TeX.txt' is done"
+    
+    Set fso = Nothing
 End Sub
     
