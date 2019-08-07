@@ -1,4 +1,4 @@
-Attribute VB_Name = "Module1"
+Attribute VB_Name = "Module11"
 Sub TableGeneratorForTeX()
 'äeéÌïœêîÇÃíËã`
     Dim i As Integer
@@ -209,12 +209,12 @@ Sub TableGeneratorForTeX()
         If Selection(column * i + 1).MergeCells Then
         
             If Selection(column * i + 1).MergeArea.Rows.Count = 1 Then
-                cell_code(column * i) = "\multicolumn{" + Trim(Selection(column * i + 1).MergeArea.Columns.Count) + "}{" + cell_line_l((column + 1) * i) + cell_pos(column * i) + cell_line_l((column + 1) * i + Selection(column * i + 1).MergeArea.Columns.Count) + "}{" + Trim(Selection(column * i + 1).Value) + "}"
+                cell_code(column * i) = "\multicolumn{" + Trim(Selection(column * i + 1).MergeArea.Columns.Count) + "}{" + cell_line_l((column + 1) * i) + cell_pos(column * i) + cell_line_l((column + 1) * i + Selection(column * i + 1).MergeArea.Columns.Count) + "}{" + Trim(Selection(column * i + 1).Text) + "}"
             
             Else
             
                 If Selection(column * i + 1).MergeArea.Item(1).Address = Selection(column * i + 1).Address Then
-                    cell_code(column * i) = "\multicolumn{" + Trim(Selection(column * i + 1).MergeArea.Columns.Count) + "}{" + cell_line_l((column + 1) * i) + cell_pos(column * i) + cell_line_l((column + 1) * i + Selection(column * i + 1).MergeArea.Columns.Count) + "}{" + "\multirow{" + Trim(Selection(column * i + 1).MergeArea.Rows.Count) + "}{*}{" + Trim(Selection(column * i + 1).Value) + "}}"
+                    cell_code(column * i) = "\multicolumn{" + Trim(Selection(column * i + 1).MergeArea.Columns.Count) + "}{" + cell_line_l((column + 1) * i) + cell_pos(column * i) + cell_line_l((column + 1) * i + Selection(column * i + 1).MergeArea.Columns.Count) + "}{" + "\multirow{" + Trim(Selection(column * i + 1).MergeArea.Rows.Count) + "}{*}{" + Trim(Selection(column * i + 1).Text) + "}}"
                 
                 ElseIf Selection(column * i + 1).MergeArea.Item(1).column = Selection(column * i + 1).column Then
                     cell_code(column * i) = "\multicolumn{" + Trim(Selection(column * i + 1).MergeArea.Columns.Count) + "}{" + cell_line_l((column + 1) * i) + cell_pos(column * i) + cell_line_l((column + 1) * i + Selection(column * i + 1).MergeArea.Columns.Count) + "}{}"
@@ -228,13 +228,13 @@ Sub TableGeneratorForTeX()
         Else
         
             If ((column_line_judge((column + 1) * i) Xor column_line(0)) = 1) Or ((column_line_judge((column + 1) * i + 1) Xor column_line(1)) = 1) Then
-                cell_code(column * i) = "\multicolumn{" + "1" + "}{" + cell_line_l((column + 1) * i) + cell_pos(column * i) + cell_line_l((column + 1) * i + 1) + "}{" + Trim(Selection(column * i + 1).Value) + "}"
+                cell_code(column * i) = "\multicolumn{" + "1" + "}{" + cell_line_l((column + 1) * i) + cell_pos(column * i) + cell_line_l((column + 1) * i + 1) + "}{" + Trim(Selection(column * i + 1).Text) + "}"
             
             ElseIf Not cell_pos(column * i) = column_pos(0) Then
-                cell_code(column * i) = "\multicolumn{" + "1" + "}{" + cell_line_l((column + 1) * i) + cell_pos(column * i) + cell_line_l((column + 1) * i + 1) + "}{" + Trim(Selection(column * i + 1).Value) + "}"
+                cell_code(column * i) = "\multicolumn{" + "1" + "}{" + cell_line_l((column + 1) * i) + cell_pos(column * i) + cell_line_l((column + 1) * i + 1) + "}{" + Trim(Selection(column * i + 1).Text) + "}"
                 
             Else
-                cell_code(column * i) = Trim(Selection(column * i + 1).Value)
+                cell_code(column * i) = Trim(Selection(column * i + 1).Text)
             End If
         End If
         
@@ -252,14 +252,14 @@ Sub TableGeneratorForTeX()
                 If Selection(column * i + j + 1).MergeArea.Rows.Count = 1 Then
                     
                     If Selection(column * i + j + 1).MergeArea.Item(1).Address = Selection(column * i + j + 1).Address Then
-                        cell_code(column * i + j) = "\multicolumn{" + Trim(Selection(column * i + j + 1).MergeArea.Columns.Count) + "}{" + cell_line_l((column + 1) * i + j) + cell_pos(column * i + j) + cell_line_l((column + 1) * i + j + Selection(column * i + j + 1).MergeArea.Columns.Count) + "}{" + Trim(Selection(column * i + j + 1).Value) + "}"
+                        cell_code(column * i + j) = "\multicolumn{" + Trim(Selection(column * i + j + 1).MergeArea.Columns.Count) + "}{" + cell_line_l((column + 1) * i + j) + cell_pos(column * i + j) + cell_line_l((column + 1) * i + j + Selection(column * i + j + 1).MergeArea.Columns.Count) + "}{" + Trim(Selection(column * i + j + 1).Text) + "}"
                     Else
                         cell_code(column * i + j) = ""
                     End If
                 Else
                     
                     If Selection(column * i + j + 1).MergeArea.Item(1).Address = Selection(column * i + j + 1).Address Then
-                        cell_code(column * i + j) = "\multicolumn{" + Trim(Selection(column * i + j + 1).MergeArea.Columns.Count) + "}{" + cell_line_l((column + 1) * i + j) + cell_pos(column * i + j) + cell_line_l((column + 1) * i + j + Selection(column * i + j + 1).MergeArea.Columns.Count) + "}{" + "\multirow{" + Trim(Selection(column * i + j + 1).MergeArea.Rows.Count) + "}{*}{" + Trim(Selection(column * i + j + 1).Value) + "}}"
+                        cell_code(column * i + j) = "\multicolumn{" + Trim(Selection(column * i + j + 1).MergeArea.Columns.Count) + "}{" + cell_line_l((column + 1) * i + j) + cell_pos(column * i + j) + cell_line_l((column + 1) * i + j + Selection(column * i + j + 1).MergeArea.Columns.Count) + "}{" + "\multirow{" + Trim(Selection(column * i + j + 1).MergeArea.Rows.Count) + "}{*}{" + Trim(Selection(column * i + j + 1).Text) + "}}"
                     
                     ElseIf Selection(column * i + j + 1).MergeArea.Item(1).column = Selection(column * i + j + 1).column Then
                         cell_code(column * i + j) = "\multicolumn{" + Trim(Selection(column * i + j + 1).MergeArea.Columns.Count) + "}{" + cell_line_l((column + 1) * i + j) + cell_pos(column * i + j) + cell_line_l((column + 1) * i + j + Selection(column * i + j + 1).MergeArea.Columns.Count) + "}{}"
@@ -273,13 +273,13 @@ Sub TableGeneratorForTeX()
             Else
             
                 If ((column_line_judge((column + 1) * i + j) Xor column_line(j)) = 1) Or ((column_line_judge((column + 1) * i + j + 1) Xor column_line(j + 1)) = 1) Then
-                    cell_code(column * i + j) = "\multicolumn{" + "1" + "}{" + cell_line_l((column + 1) * i + j) + cell_pos(column * i + j) + cell_line_l((column + 1) * i + j + 1) + "}{" + Trim(Selection(column * i + j + 1).Value) + "}"
+                    cell_code(column * i + j) = "\multicolumn{" + "1" + "}{" + cell_line_l((column + 1) * i + j) + cell_pos(column * i + j) + cell_line_l((column + 1) * i + j + 1) + "}{" + Trim(Selection(column * i + j + 1).Text) + "}"
                     
                 ElseIf Not cell_pos(column * i + j) = column_pos(j) Then
-                    cell_code(column * i + j) = "\multicolumn{" + "1" + "}{" + cell_line_l((column + 1) * i + j) + cell_pos(column * i + j) + cell_line_l((column + 1) * i + j + 1) + "}{" + Trim(Selection(column * i + j + 1).Value) + "}"
+                    cell_code(column * i + j) = "\multicolumn{" + "1" + "}{" + cell_line_l((column + 1) * i + j) + cell_pos(column * i + j) + cell_line_l((column + 1) * i + j + 1) + "}{" + Trim(Selection(column * i + j + 1).Text) + "}"
                 
                 Else
-                    cell_code(column * i + j) = Trim(Selection(column * i + j + 1).Value)
+                    cell_code(column * i + j) = Trim(Selection(column * i + j + 1).Text)
                 End If
             End If
             
